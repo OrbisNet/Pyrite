@@ -1,8 +1,17 @@
 // Pyrite
 // core.h
 
-#include <Common.h>
+/*
+    This File Contains all the stuff needed to make life easier when using pyrite
+    PUBLIC_ATTRIBUTE is used on functions such as plugin load and unload and need to be used there or else
+    goldhen cant find those and run those
+*/
 
+#include <Common.h>
+//  shut up intellisense 
+#ifdef __INTELLISENSE__
+    #define __attribute__(x)
+#endif
 
 // Shorthand names
 typedef uint8_t  u8;
