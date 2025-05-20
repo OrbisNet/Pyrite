@@ -2,12 +2,12 @@
 #include <stdbool.h>
 #include <string.h>
 #include <orbis/libkernel.h>
-
+#include <time.h>
 
 // Pyrite Includes
 #include "core.h"
-#include "Logging/public/Log.h"
-#include "Kernal/Notification/public/notification.h"
+#include "Logging/Public/Log.h"
+#include "Kernal/Notification/Public/notification.h"
 
 #define PLUGIN_NAME "Example Plugin"
 #define PLUGIN_DESC "Pyrite Example Plugin"

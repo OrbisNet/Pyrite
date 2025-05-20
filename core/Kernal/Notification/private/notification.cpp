@@ -1,6 +1,7 @@
 #include <Common.h>
 #include <string.h>
 #include "Kernal/Notification/public/notification.h"
+#include "Logging/Public/Log.h"
 
 // Thanks to OSM he the goat
 // https://github.com/OSM-Made/PS4-Notify/blob/main/Notify.cpp
@@ -19,6 +20,7 @@ void SendNotification(char* IconUri,char* MSG, ...) {
     Buffer.targetId = -1;
     strcpy(Buffer.iconUri, IconUri); 
 
+    LOG(LogKernalNotification,LogVerbosity::Log,"Sending Kernal Notifiaction with message: %s",Buffer.message);
     sceKernelSendNotificationRequest(0, &Buffer, 3120, 0);
 }
 

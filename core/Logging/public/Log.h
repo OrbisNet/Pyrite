@@ -6,6 +6,11 @@
 #define LOG(Category, Verbosity, Format, ...) Log(Category, Verbosity, Format, ##__VA_ARGS__)
 
 
+// Default Log Declarations
+DECLARE_LOG_CATEGORY(LogKernalNotification);
+DECLARE_LOG_CATEGORY(LogKernal);
+
+
 enum class LogVerbosity {
     Log,
     Warning,
