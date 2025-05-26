@@ -1,0 +1,75 @@
+#include <Common.h>
+
+// Macro Definition
+
+#define NOTIFY(IconUri,Message, ...) SendNotification(IconUri,Message,##__VA_ARGS__)
+
+// Thanks to OSM he the goat :speak:
+// https://github.com/OSM-Made/PS4-Notify/
+
+#define PS_NOTIFICATION_TEX_ICON_SYSTEM "cxml://psnotification/tex_icon_system"
+#define PS_NOTIFICATION_TEX_ICON_BAN "cxml://psnotification/tex_icon_ban"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_NOTIFICATION "cxml://psnotification/tex_default_icon_notification"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_MESSAGE "cxml://psnotification/tex_default_icon_message"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_FRIEND "cxml://psnotification/tex_default_icon_friend"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_TROPHY "cxml://psnotification/tex_default_icon_trophy"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_DOWNLOAD "cxml://psnotification/tex_default_icon_download"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_UPLOAD_16_9 "cxml://psnotification/tex_default_icon_upload_16_9"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_CLOUD_CLIENT "cxml://psnotification/tex_default_icon_cloud_client"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_ACTIVITY "cxml://psnotification/tex_default_icon_activity"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_SMAPS "cxml://psnotification/tex_default_icon_smaps"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_SHAREPLAY "cxml://psnotification/tex_default_icon_shareplay"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_TIPS "cxml://psnotification/tex_default_icon_tips"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_EVENTS "cxml://psnotification/tex_default_icon_events"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_SHARE_SCREEN "cxml://psnotification/tex_default_icon_share_screen"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_COMMUNITY "cxml://psnotification/tex_default_icon_community"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_LFPS "cxml://psnotification/tex_default_icon_lfps"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_TOURNAMENT "cxml://psnotification/tex_default_icon_tournament"
+#define PS_NOTIFICATION_TEX_DEFAULT_ICON_TEAM "cxml://psnotification/tex_default_icon_team"
+#define PS_NOTIFICATION_TEX_DEFAULT_AVATAR "cxml://psnotification/tex_default_avatar"
+#define PS_NOTIFICATION_TEX_ICON_CAPTURE "cxml://psnotification/tex_icon_capture"
+#define PS_NOTIFICATION_TEX_ICON_START_REC "cxml://psnotification/tex_icon_start_rec"
+#define PS_NOTIFICATION_TEX_ICON_STOP_REC "cxml://psnotification/tex_icon_stop_rec"
+#define PS_NOTIFICATION_TEX_ICON_LIVE_PROHIBITED "cxml://psnotification/tex_icon_live_prohibited"
+#define PS_NOTIFICATION_TEX_ICON_LIVE_START "cxml://psnotification/tex_icon_live_start"
+#define PS_NOTIFICATION_TEX_ICON_LOADING "cxml://psnotification/tex_icon_loading"
+#define PS_NOTIFICATION_TEX_ICON_LOADING_16_9 "cxml://psnotification/tex_icon_loading_16_9"
+#define PS_NOTIFICATION_TEX_ICON_COUNTDOWN "cxml://psnotification/tex_icon_countdown"
+#define PS_NOTIFICATION_TEX_ICON_PARTY "cxml://psnotification/tex_icon_party"
+#define PS_NOTIFICATION_TEX_ICON_SHAREPLAY "cxml://psnotification/tex_icon_shareplay"
+#define PS_NOTIFICATION_TEX_ICON_BROADCAST "cxml://psnotification/tex_icon_broadcast"
+#define PS_NOTIFICATION_TEX_ICON_PS_NOW_TOAST "cxml://psnotification/tex_icon_psnow_toast"
+#define PS_NOTIFICATION_TEX_AUDIO_DEVICE_HEADPHONE "cxml://psnotification/tex_audio_device_headphone"
+#define PS_NOTIFICATION_TEX_AUDIO_DEVICE_HEADSET "cxml://psnotification/tex_audio_device_headset"
+#define PS_NOTIFICATION_TEX_AUDIO_DEVICE_MIC "cxml://psnotification/tex_audio_device_mic"
+#define PS_NOTIFICATION_TEX_AUDIO_DEVICE_MORPHEUS "cxml://psnotification/tex_audio_device_morpheus"
+#define PS_NOTIFICATION_TEX_DEVICE_BATTERY_0 "cxml://psnotification/tex_device_battery_0"
+#define PS_NOTIFICATION_TEX_DEVICE_BATTERY_1 "cxml://psnotification/tex_device_battery_1"
+#define PS_NOTIFICATION_TEX_DEVICE_BATTERY_2 "cxml://psnotification/tex_device_battery_2"
+#define PS_NOTIFICATION_TEX_DEVICE_BATTERY_3 "cxml://psnotification/tex_device_battery_3"
+#define PS_NOTIFICATION_TEX_DEVICE_BATTERY_NOCHARGE "cxml://psnotification/tex_device_battery_nocharge"
+#define PS_NOTIFICATION_TEX_DEVICE_COMP_APP "cxml://psnotification/tex_device_comp_app"
+#define PS_NOTIFICATION_TEX_DEVICE_CONTROLLER "cxml://psnotification/tex_device_controller"
+#define PS_NOTIFICATION_TEX_DEVICE_JEDI_USB "cxml://psnotification/tex_device_jedi_usb"
+#define PS_NOTIFICATION_TEX_DEVICE_BLASTER "cxml://psnotification/tex_device_blaster"
+#define PS_NOTIFICATION_TEX_DEVICE_HEADPHONE "cxml://psnotification/tex_device_headphone"
+#define PS_NOTIFICATION_TEX_DEVICE_HEADSET "cxml://psnotification/tex_device_headset"
+#define PS_NOTIFICATION_TEX_DEVICE_KEYBOARD "cxml://psnotification/tex_device_keyboard"
+#define PS_NOTIFICATION_TEX_DEVICE_MIC "cxml://psnotification/tex_device_mic"
+#define PS_NOTIFICATION_TEX_DEVICE_MORPHEUS "cxml://psnotification/tex_device_morpheus"
+#define PS_NOTIFICATION_TEX_DEVICE_MOUSE "cxml://psnotification/tex_device_mouse"
+#define PS_NOTIFICATION_TEX_DEVICE_MOVE "cxml://psnotification/tex_device_move"
+#define PS_NOTIFICATION_TEX_DEVICE_REMOTE "cxml://psnotification/tex_device_remote"
+#define PS_NOTIFICATION_TEX_DEVICE_OMIT "cxml://psnotification/tex_device_omit"
+#define PS_NOTIFICATION_TEX_ICON_CONNECT "cxml://psnotification/tex_icon_connect"
+#define PS_NOTIFICATION_TEX_ICON_EVENT_TOAST "cxml://psnotification/tex_icon_event_toast"
+#define PS_NOTIFICATION_TEX_MORPHEUS_TROPHY_BRONZE "cxml://psnotification/tex_morpheus_trophy_bronze"
+#define PS_NOTIFICATION_TEX_MORPHEUS_TROPHY_SILVER "cxml://psnotification/tex_morpheus_trophy_silver"
+#define PS_NOTIFICATION_TEX_MORPHEUS_TROPHY_GOLD "cxml://psnotification/tex_morpheus_trophy_gold"
+#define PS_NOTIFICATION_TEX_MORPHEUS_TROPHY_PLATINUM "cxml://psnotification/tex_morpheus_trophy_platinum"
+#define PS_NOTIFICATION_TEX_ICON_CHAMPIONS_LEAGUE "cxml://psnotification/tex_icon_champions_league"
+
+
+// Functions
+
+void SendNotification(char* IconUri,char* MSG, ...);
