@@ -1,6 +1,6 @@
 #include <Common.h>
 #include <string.h>
-#include "Kernal/Notification/public/notification.h"
+#include "Kernal/Notification/Public/notification.h"
 #include "Logging/Public/Log.h"
 
 // Thanks to OSM he the goat

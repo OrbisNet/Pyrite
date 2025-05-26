@@ -1,4 +1,4 @@
-#include "../public/Log.h"
+#include "../Public/Log.h"
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
