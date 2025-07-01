@@ -9,7 +9,9 @@
 // Default Log Declarations
 DECLARE_LOG_CATEGORY(LogKernalNotification);
 DECLARE_LOG_CATEGORY(LogKernal);
+DECLARE_LOG_CATEGORY(LogFilesystem);
 
+DECLARE_LOG_CATEGORY(PYRITE);
 
 enum class LogVerbosity {
     Log,
