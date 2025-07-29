@@ -3,13 +3,15 @@
 #include "core.h"
 #include "orbis/libkernel.h"
 
+#define DEBUG 1
+
 bool FileManager::createFile(string path) {
     s32 file = sceKernelOpen(path, FM_CREATE | FM_READWRITE ,770);
 
     if (file < 0) {
-#if DEBUG
-            LOG(LogFilesystem,LogVerbosity::Error,"Couldnt Create File!: %s", path);
-#endif
+
+        LOG(LogFilesystem,LogVerbosity::Log,"Couldnt Create File!: %s", path);
+
         sceKernelClose(file);
         return false;
     }
@@ -21,9 +23,9 @@ bool FileManager::deleteFile(string path) {
     s32 file = sceKernelUnlink(path);
 
     if (file < 0) {
-#if DEBUG
-            LOG(LogFilesystem,LogVerbosity::Error,"Couldn't remove file!: %s", path);
-#endif
+
+        LOG(LogFilesystem,LogVerbosity::Log,"Couldn't remove file!: %s", path);
+
         sceKernelClose(file);
         return false;
     }
@@ -34,12 +36,14 @@ bool FileManager::deleteFile(string path) {
 bool FileManager::fileExists(string path) {
     OrbisKernelStat stat;
 
+    LOG(LogFilesystem,LogVerbosity::Log,"Checking if File exists");
+
     s32 file = sceKernelStat(path, &stat);
 
     if (file < 0) {
-#if DEBUG
-            LOG(LogFilesystem,LogVerbosity::Error,"Couldn't determ File Existance: %s", path);
-#endif
+
+        LOG(LogFilesystem,LogVerbosity::Log,"Couldn't determ File Existance: %s", path);
+
         sceKernelClose(file);
         return false;
     }
@@ -58,9 +62,9 @@ string FileManager::readfile(string path) {
         filesize = sceKernelLseek(file,0,SEEK_END);
 
         if (filesize < 0) {
-#if DEBUG
-            LOG(LogFilesystem,LogVerbosity::Error,"File is Empty!: %s", path);
-#endif
+
+            LOG(LogFilesystem,LogVerbosity::Log,"File is Empty!: %s", path);
+
             sceKernelClose(file);
             return nullptr;
         }
@@ -71,10 +75,10 @@ string FileManager::readfile(string path) {
         results = sceKernelRead(file,filedata ,filesize);
 
         if (results < 0 ) {
-#if DEBUG
 
-            LOG(LogFilesystem,LogVerbosity::Error,"Failed to read file: %s", path);
-#endif
+
+            LOG(LogFilesystem,LogVerbosity::Log,"Failed to read file: %s", path);
+
             sceKernelClose(file);
             return nullptr;
         }
@@ -83,6 +87,7 @@ string FileManager::readfile(string path) {
         return filedata;
 
     };
+    LOG(LogFilesystem,LogVerbosity::Log,"invalid File");
     return nullptr;
 }
 
@@ -96,9 +101,8 @@ bool FileManager::writefile(string path,string content) {
         result = sceKernelWrite(file,content,sizeof(content));
 
         if (result < 0) {
-#if DEBUG
-            LOG(LogFilesystem,LogVerbosity::Error,"Couldn't Write to file!");
-#endif 
+
+            LOG(LogFilesystem,LogVerbosity::Log,"Couldn't Write to file!");
             sceKernelClose(file);
             return false;
         }

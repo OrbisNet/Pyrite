@@ -34,6 +34,7 @@ typedef double   f64;
 typedef char* string;
 
 
+
 #define PUBLIC_ATTRIBUTE __attribute__((visibility("default")))
 #define WEAK_ATTRIBUTE   __attribute__((weak, visibility("hidden")))
 

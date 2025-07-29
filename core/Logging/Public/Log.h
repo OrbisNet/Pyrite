@@ -1,4 +1,7 @@
 
+
+#ifndef _PYRITE_LOG_H_
+#define _PYRITE_LOG_H_
 // Macro Definitions
 #define DECLARE_LOG_CATEGORY(Name) \
     constexpr const char* Name = #Name
@@ -21,3 +24,4 @@ enum class LogVerbosity {
 };
 
 void Log(const char* Category, LogVerbosity Verbosity, const char* Format, ...);
+#endif

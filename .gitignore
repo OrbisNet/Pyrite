@@ -59,3 +59,7 @@ bin
 
 # WIP stuff no sharing yet!!!
 Plugins/OrbisPresence
+.sconsign.dblite
+
+# so people dont need to compile it
+!libPyrite.a 
